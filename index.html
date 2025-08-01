@@ -1,48 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>H5P Test Content Index</title>
+  <meta charset="UTF-8">
+  <title>Comanda De Bebidas</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="H5P.FontIcons-1.0/styles/h5p-font-icons.css" rel="stylesheet">
+  <link href="H5P.Question-1.5/styles/h5p.css" rel="stylesheet">
+  <link href="H5P.JoubelUI-1.3/styles/h5p-joubel-ui.css" rel="stylesheet">
+  <link href="H5P.Video-1.6/styles/h5p-video.css" rel="stylesheet">
+  <!-- Add other H5P content stylesheets as needed -->
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 2rem;
-      background-color: #f9f9f9;
-    }
-    h1 {
-      color: #333;
-    }
-    ul {
-      list-style-type: none;
+    html, body {
+      margin: 0;
       padding: 0;
     }
-    li {
-      background: #fff;
-      margin: 10px 0;
-      padding: 10px;
-      border: 1px solid #ddd;
-      border-radius: 6px;
-    }
-    a {
-      text-decoration: none;
-      color: #007acc;
-    }
-    a:hover {
-      text-decoration: underline;
+    #h5p-container {
+      width: 100%;
+      height: 100vh;
     }
   </style>
 </head>
 <body>
-  <h1>H5P Test Files Index</h1>
-  <p>Select a file to preview or download:</p>
-  <ul>
-    <li><a href="advance-options.html">Advance Options</a></li>
-    <li><a href="external_libraries.html">External Libraries</a></li>
-    <li><a href="multiple.html">Multiple H5P Instances</a></li>
-    <li><a href="single.html">Single H5P Content</a></li>
-    <li><a href="state.html">State Handling</a></li>
-    <li><a href="Comanda De Bebidas (1).h5p" download>Download: Comanda De Bebidas (1).h5p</a></li>
-  </ul>
+  <div id="h5p-container"></div>
+
+  <script src="H5P.FontIcons-1.0/scripts/h5p-font-icons.js"></script>
+  <script src="H5P.JoubelUI-1.3/scripts/h5p-joubel-ui.js"></script>
+  <script src="H5P.Question-1.5/scripts/h5p-question.js"></script>
+  <script src="H5P.Video-1.6/scripts/h5p-video.js"></script>
+  <!-- Add other H5P content scripts as needed -->
+
+  <!-- Core H5P scripts -->
+  <script src="vendor/h5p/h5p-core/js/h5p.js"></script>
+  <script src="vendor/h5p/h5p-core/js/h5p-event-dispatcher.js"></script>
+  <script src="vendor/h5p/h5p-core/js/h5p-content-type.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const container = document.getElementById('h5p-container');
+
+      // Manually simulate content loading
+      const contentData = {
+        title: "Comanda De Bebidas",
+        contentUrl: "content",
+        library: "H5P.SpeakTheWords 1.5", // Example, update with your actual main content type
+        contentJsonPath: "content/content.json"
+      };
+
+      // Fake H5P integration instance
+      const H5PIntegration = {
+        baseUrl: ".",
+        url: ".",
+        contents: {
+          "cid-1": {
+            library: contentData.library,
+            jsonContentPath: contentData.contentJsonPath,
+            contentUrl: contentData.contentUrl
+          }
+        },
+        core: {
+          styles: [],
+          scripts: []
+        }
+      };
+
+      // Create H5P instance
+      const h5pInstance = new H5P.Player(container, H5PIntegration.contents['cid-1']);
+    });
+  </script>
 </body>
 </html>
